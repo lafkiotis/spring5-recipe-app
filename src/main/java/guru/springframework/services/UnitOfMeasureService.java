@@ -5,7 +5,7 @@ import guru.springframework.commands.UnitOfMeasureCommand;
 import java.util.Set;
 
 /**
- * Created by Dimitrios Stefos on 4/21/2018.
+ * Created by jt on 6/28/17.
  */
 public interface UnitOfMeasureService {
 

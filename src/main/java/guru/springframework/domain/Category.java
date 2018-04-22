@@ -2,17 +2,18 @@ package guru.springframework.domain;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
 /**
- * Created by Dimitrios Stefos on 4/21/2018.
+ * Created by jt on 6/13/17.
  */
+@Getter
+@Setter
+@EqualsAndHashCode(exclude = {"recipes"})
 @Entity
-@Getter @Setter @NoArgsConstructor
 public class Category {
 
     @Id
@@ -22,4 +23,5 @@ public class Category {
 
     @ManyToMany(mappedBy = "categories")
     private Set<Recipe> recipes;
+
 }

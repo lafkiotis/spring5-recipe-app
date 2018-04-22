@@ -1,9 +1,9 @@
 package guru.springframework.domain;
 
 /**
- * Created by Dimitrios Stefos on 4/21/2018.
+ * Created by jt on 6/13/17.
  */
 public enum Difficulty {
 
-    EASY, MODERATE, HARD
+    EASY, MODERATE, KIND_OF_HARD, HARD
 }

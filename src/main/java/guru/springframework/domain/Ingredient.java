@@ -1,17 +1,19 @@
 package guru.springframework.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
- * Created by Dimitrios Stefos on 4/21/2018.
+ * Created by jt on 6/13/17.
  */
+@Getter
+@Setter
+@EqualsAndHashCode(exclude = {"recipe"})
 @Entity
-@Getter @Setter @NoArgsConstructor
 public class Ingredient {
 
     @Id
@@ -20,34 +22,26 @@ public class Ingredient {
     private String description;
     private BigDecimal amount;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    private UnitOfMeasure uom;
+
     @ManyToOne
     private Recipe recipe;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    private UnitOfMeasure unitOfMeasure;
+    public Ingredient() {
+    }
 
-    public Ingredient(String description, BigDecimal amount, UnitOfMeasure unitOfMeasure) {
+    public Ingredient(String description, BigDecimal amount, UnitOfMeasure uom) {
         this.description = description;
         this.amount = amount;
-        this.unitOfMeasure = unitOfMeasure;
+        this.uom = uom;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Ingredient ingredient = (Ingredient) o;
-        if (id != null) {
-            return id.equals(ingredient.id);
-        }
-        return description.equalsIgnoreCase(ingredient.description);
+    public Ingredient(String description, BigDecimal amount, UnitOfMeasure uom, Recipe recipe) {
+        this.description = description;
+        this.amount = amount;
+        this.uom = uom;
+        this.recipe = recipe;
     }
 
-    @Override
-    public int hashCode() {
-        if (id != null) {
-            return id.hashCode();
-        }
-        return description.hashCode();
-    }
 }

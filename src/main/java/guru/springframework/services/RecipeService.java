@@ -6,7 +6,7 @@ import guru.springframework.domain.Recipe;
 import java.util.Set;
 
 /**
- * Created by Dimitrios Stefos on 4/21/2018.
+ * Created by jt on 6/13/17.
  */
 public interface RecipeService {
 
