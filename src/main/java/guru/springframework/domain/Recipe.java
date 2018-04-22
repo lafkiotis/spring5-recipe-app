@@ -1,5 +1,6 @@
 package guru.springframework.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.util.Set;
  * Created by Dimitrios Stefos on 4/21/2018.
  */
 @Entity
+@EqualsAndHashCode
 @Getter @Setter @NoArgsConstructor
 public class Recipe {
 
@@ -47,25 +49,14 @@ public class Recipe {
     private Set<Ingredient> ingredients = new HashSet<>();
 
     public void setNotes(Notes notes) {
-        this.notes = notes;
-        notes.setRecipe(this);
+        if (notes != null) {
+            this.notes = notes;
+            notes.setRecipe(this);
+        }
     }
 
     public void addIngredient(Ingredient ingredient){
         ingredient.setRecipe(this);
         this.ingredients.add(ingredient);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Recipe recipe = (Recipe) o;
-        return id.equals(recipe.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return id.hashCode();
     }
 }

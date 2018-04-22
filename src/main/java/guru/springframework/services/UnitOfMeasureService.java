@@ -1,13 +1,13 @@
 package guru.springframework.services;
 
-import guru.springframework.domain.UnitOfMeasure;
+import guru.springframework.commands.UnitOfMeasureCommand;
 
-import java.util.Optional;
+import java.util.Set;
 
 /**
- * Created by Dimitrios Stefos on 4/22/2018.
+ * Created by Dimitrios Stefos on 4/21/2018.
  */
 public interface UnitOfMeasureService {
 
-    Optional<UnitOfMeasure> findByDescription(String description);
+    Set<UnitOfMeasureCommand> listAllUoms();
 }
